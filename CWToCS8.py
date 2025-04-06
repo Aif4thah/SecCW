@@ -21,14 +21,14 @@
 # This is a terrible, quick hack of a Morse code baseband file generator.
 #
 # Run to generate a file that contains baseband data you can later transmit
-# with hackrf_transfer:
-#
+# with hackrf_transfer :
+# 
 #     .\venv\Scripts\activate
-#     python Hackrf-morse.py MYCALLSIGN baseband.cs8
+#     python ./CWToCS8.py test test.cs8
 #
 # Use with hackrf_transfer as follows to transmit :
 #
-#     hackrf_transfer -s 8000000 -x 16 -a 0 -f 433500000 -b 1750000 -t baseband.cs8
+#     hackrf_transfer -s 8000000 -x 16 -a 0 -f 433500000 -b 1750000 -t test.cs8
 #
 
 import sys

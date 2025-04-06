@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+# Read IQ from a CS8 file
+# ie:
+#  
+# python ./ReadCS8.py ./test.cs8
+#
+
+
 import numpy
 import matplotlib.pyplot as plt
 import sys
