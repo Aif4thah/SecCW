@@ -157,12 +157,14 @@ if __name__ == "__main__":
 	output = convert_to_CW(sys.argv[1])
 
 	# verify
+	"""
 	try:
 		plt.plot(output)
 		plt.legend(loc="upper right")
 		plt.show()
 	except Exception:
 		print(Exception)
+	"""
 
 	write_toCS8(output, sys.argv[2])
 
