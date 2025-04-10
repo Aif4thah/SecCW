@@ -11,7 +11,6 @@
 
 Secured Continuous Wave transmission
 
-
 > [!CAUTION]
 > This is a non-standardized POC. Use it at your own risk.
 
@@ -32,7 +31,7 @@ Secured Continuous Wave transmission
 
 * **crpyptagraphic keys management is a big deal** that the POC do not describes. 
 
-We just simplify the NIST.SP.800-57 Key States :
+We just simplify the [NIST.SP.800-57](https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final) Key States :
 
 
 | States | Short Description |
@@ -92,13 +91,12 @@ iv: A977EA111934D65E8A6B5AC3D52B82F8
 python ./CWToCS8.py EFAADCF7EA0A786EF7B4EF7504605970 test.cs8
 ```
 
-<p align="center">
-    <img src="./Docs/PlotBlue.png" alt="PltBlue" style="width: 600px;" />
-</p>
+![PltBlue](./Docs/PlotBlue.png)
 
 ```sh
 hackrf_transfer -s 8000000 -x 16 -a 1 -f 40677000 -b 1750000 -t test.cs8
 ```
+
 
 ### Recieve
 
@@ -108,9 +106,7 @@ hackrf_transfer -s 8000000 -x 16 -a 1 -f 40677000 -b 1750000 -t test.cs8
 python ./ReadCS8.py ./test.cs8
 ```
 
-<p align="center">
-    <img src="./Docs/PlotRed.png" alt="PltRed" style="width: 600px;" />
-</p>
+![PltRed](./Docs/PlotRed.png)
 
 
 * Decrypt
