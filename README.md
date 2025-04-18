@@ -46,6 +46,11 @@ Convert to CW and write an IQ file :
 
 ```sh
 python ./CWToCS8.py EFAADCF7EA0A786EF7B4EF7504605970 test-to-transmit.cs8
+```
+
+verify real part before sending :
+
+```sh
 python ./ReadCS8.py test-to-transmit.cs8
 ```
 
@@ -77,12 +82,7 @@ Reception with `SDR#` :
 For further analysis, here is the `HackRF_transfer` command to capture an IQ file (adjust LNA and VGA) :
 
 ```sh
-hackrf_transfer -s 8000000 -f 40677000 -a 0 -l 24 -g 6 -r test-recvd.cs8
-
-call hackrf_set_sample_rate(8000000 Hz/8.000 MHz)
-call hackrf_set_hw_sync_mode(0)
-call hackrf_set_freq(40677000 Hz/40.677 MHz)
-call hackrf_set_amp_enable(0)
+hackrf_transfer -s 8000000 -f 40677000 -b 1750000 -a 1 -l 24 -g 12 -r test-recvd.cs8
 ```
 
 Then we can visualize the Signal :
@@ -91,7 +91,14 @@ Then we can visualize the Signal :
 python ./ReadCS8.py .\test-recvd.cs8
 ```
 
-![recv](./Docs/test-recvd2.png)
+FFT :
+
+![recv](./Docs/test-recvd-FFT.png)
+
+
+Amplitude ower time :
+
+![recv](./Docs/test-recvd-amp-vs-time.png)
 
 
 Decrypt :

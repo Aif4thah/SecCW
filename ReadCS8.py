@@ -110,7 +110,7 @@ def read_amplitude(input_file, sampling_rate=8000000): #default sample rate = 80
         time = np.linspace(0, len(amplitude) / sampling_rate, num=len(amplitude))
 
         # Optimisation de l'affichage avec échantillonnage
-        step = max(1, len(amplitude) // 4000)  # Afficher 4000 points maximum
+        step = max(1, len(amplitude) // 40000)  # Afficher 40000 points maximum
         plt.figure(figsize=(10, 6))
         plt.plot(time[::step], amplitude[::step], label="Amplitude du Signal", color="purple")
         plt.title("Amplitude du Signal en Fonction du Temps")
