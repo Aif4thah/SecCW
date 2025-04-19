@@ -11,7 +11,7 @@
 Secured Continuous Wave Transmission
 
 > [!WARNING]
-> **This is a non-standardized POC. Use it at your own risk.** This repository and its tools are provided "as is." The author(s) make no representations or warranties, express or implied, regarding the operation of the information, content, materials, tools, services, or products included. The author(s) disclaim, to the full extent permissible by law, all warranties, express or implied, including implied warranties of merchantability and fitness for a particular purpose.
+> This repository and its tools are provided "as is." The author(s) make no representations or warranties, express or implied, regarding the operation of the information, content, materials, tools, services, or products included. The author(s) disclaim, to the full extent permissible by law, all warranties, express or implied, including implied warranties of merchantability and fitness for a particular purpose.
 
 > [!NOTE]
 > While this project is open-source and free to use, we kindly ask that if you are using it for commercial purposes or in a business setting, please consider sponsoring the project through GitHub Sponsors. Your support helps maintain and improve the project, ensuring it remains a valuable resource for everyone. Thank you for your understanding and generosity.
@@ -41,6 +41,9 @@ python ./MsgToCypher.py enc test 9CEA372979FFDCBA028BD523A3F43A44B527DE31E2BBAE5
 # cipher: EFAADCF7EA0A786EF7B4EF7504605970
 ```
 
+> [!IMPORTANT]  
+> Unlike keys, IVs must not be used more than once. Generate as many IVs as messages.
+
 
 Convert to CW and write an IQ file :
 
@@ -60,24 +63,15 @@ Transmit with SDR (adjust LNA and VGA) :
 
 ```sh
 hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f 40677000 -b 1750000 -t .\test-to-transmit.cs8
-
-call hackrf_set_sample_rate(8000000 Hz/8.000 MHz)
-call hackrf_baseband_filter_bandwidth_set(1750000 Hz/1.750 MHz)
-call hackrf_set_hw_sync_mode(0)
-call hackrf_set_freq(40677000 Hz/40.677 MHz)
-call hackrf_set_amp_enable(1)
 ```
 
 
 ### Receive
 
 > [!TIP]
-> The easy way to receive is to use another tool such as SDR# or Talkie Walkie to do it by ear
-
-Reception with `SDR#` :
+> The easy way to receive is to use a third party tool such as SDR# or a simple Talkie Walkie.
 
 ![Waterfall](./Docs/Waterfall.png)
-
 
 For further analysis, here is the `HackRF_transfer` command to capture an IQ file (adjust LNA and VGA) :
 
@@ -118,12 +112,9 @@ To leverage this proof of concept, I suggest using an external LNA as RF amplifi
 > Using an LNA or other external amplifiers can damage your SDR. Always use a DC blocker.
 
 
-### Cryptographic concerns
+### Cryptography
 
-**crpyptagraphic keys management is a big deal** that the POC do not describes. 
-
-We just simplify the [NIST.SP.800-57](https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final) Key States :
-
+**crpyptagraphic keys management is a big deal**. this POC just simplify the [NIST.SP.800-57](https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final) Key States :
 
 | States | Short Description |
 |-----|-----|
@@ -131,9 +122,6 @@ We just simplify the [NIST.SP.800-57](https://csrc.nist.gov/pubs/sp/800/57/pt1/r
 | Active | Key may be used to cryptographically protect information |
 | Compromised | Compromised key shall not be used to apply cryptographic protection to information |
 | Destroyed  | Key cannot be recovered by either physical or electronic means |
-
-> [!IMPORTANT]  
-> Unlike keys, IVs must not be used more than once. Generate as many IVs as messages.
 
 Simplified Key Management Phases and Functions ;
 
@@ -199,12 +187,6 @@ gantt
 
 * Binaries: 2024.02.1
 * Firmware Version: 2024.02.1
-
-## Go further...
-
-* Read Scripts
-
-* More info about DSP and RF on [Dojo-101](https://github.com/Aif4thah/Dojo-101)
 
 ## Credits
 
