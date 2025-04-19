@@ -73,7 +73,7 @@ hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f 40677000 -b 1750000 -t .\te
 
 ![Waterfall](./Docs/Waterfall.png)
 
-For further analysis, here is the `HackRF_transfer` command to capture an IQ file (adjust LNA and VGA) :
+For further analysis, here is the `HackRF_transfer` command to write the signal in an IQ file (adjust LNA and VGA) :
 
 ```sh
 hackrf_transfer -s 8000000 -f 40677000 -b 1750000 -a 1 -l 24 -g 12 -r test-recvd.cs8
@@ -90,7 +90,7 @@ FFT :
 ![recv](./Docs/test-recvd-FFT.png)
 
 
-Amplitude ower time :
+Amplitude over time :
 
 ![recv](./Docs/test-recvd-amp-vs-time.png)
 
@@ -123,7 +123,7 @@ To leverage this proof of concept, I suggest using an external LNA as RF amplifi
 | Compromised | Compromised key shall not be used to apply cryptographic protection to information |
 | Destroyed  | Key cannot be recovered by either physical or electronic means |
 
-Simplified Key Management Phases and Functions ;
+Simplified Key Management Phases and Functions :
 
 ```mermaid
 flowchart TD
