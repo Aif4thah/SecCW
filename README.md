@@ -168,6 +168,9 @@ python ./ReadCS8.py test-to-transmit.cs8
 To exploit this proof of concept, I suggest, if the law permits, using an external LNA as an RF amplifier to gain a small amount of power.
 
 > [!WARNING]
+> It is not legal to transmit at any power on any frequency. Find out about current regulations before use a RF amplifier.
+
+> [!CAUTION]
 > Using an LNA or other external amplifiers can damage your SDR. Always use a DC blocker.
 
 Transmit with SDR (adjust LNA, VGA) :
