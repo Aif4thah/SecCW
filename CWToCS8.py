@@ -28,7 +28,7 @@
 #
 # Use with hackrf_transfer as follows to transmit :
 #
-#     hackrf_transfer -s 8000000 -x 16 -a 0 -f <freq> -b 1750000 -t test.cs8
+#     hackrf_transfer -s 8000000 -x 16 -a 0 -f <freq_hz> -b 1750000 -t test.cs8
 #
 
 import sys
