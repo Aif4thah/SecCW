@@ -71,7 +71,7 @@ python ./ReadCS8.py test-to-transmit.cs8
 get wavelength from your choosen frequency :
 
 ```sh
-python .\FreqToAntSize.py < freq >
+python .\FreqToAntSize.py <freq>
 
 #λ (m) : 7.370073
 #Ant (cm) : 184.251824
@@ -80,7 +80,7 @@ python .\FreqToAntSize.py < freq >
 Transmit with SDR (adjust LNA and VGA) :
 
 ```sh
-hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f < freq > -b 1750000 -t .\test-to-transmit.cs8
+hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f <freq> -b 1750000 -t .\test-to-transmit.cs8
 ```
 
 
@@ -94,7 +94,7 @@ hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f < freq > -b 1750000 -t .\te
 For further analysis, here is the `HackRF_transfer` command to write the signal in an IQ file (adjust LNA and VGA) :
 
 ```sh
-hackrf_transfer -s 8000000 -f < freq > -b 1750000 -a 1 -l 24 -g 12 -r test-recvd.cs8
+hackrf_transfer -s 8000000 -f <freq> -b 1750000 -a 1 -l 24 -g 12 -r test-recvd.cs8
 ```
 
 Then we can visualize the Signal :
