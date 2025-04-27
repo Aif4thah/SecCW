@@ -72,7 +72,7 @@ flowchart TD
 
 ### 1.2 Generate keys and IVs
 
-This exemple use the `AES256` algorithm :
+This example generates the `AES256` key and the `IV` (initialization vectors) for your future messages.
 
 ```sh
 python ./MsgToCypher.py test
@@ -132,7 +132,7 @@ Share your frequency plan with your recipients over a secure channel.
 
 ### 2.1 Encrypt your message
 
-This exemple encrypt de message "test" :
+This exemple encrypt de message "test" using the `AES256` algorithm with `CBC` mode :
 
 ```sh
 python ./MsgToCypher.py enc test 9CEA372979FFDCBA028BD523A3F43A44B527DE31E2BBAE56F641D87D3F6C80BC A977EA111934D65E8A6B5AC3D52B82F8
