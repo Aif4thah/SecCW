@@ -228,14 +228,14 @@ python ./MsgToCypher.py dec EFAADCF7EA0A786EF7B4EF7504605970 9CEA372979FFDCBA028
 
 ## 4. Misc
 
-### Environment
+### 4.1 Environment
 
- Python
+**Python**
 
 * version: 3.13.2.
 * Virtual Env and dependencies: read `requirement.txt`
 
-HackRF-One
+**HackRF-One**
 
 * Binaries: 2024.02.1
 * Firmware Version: 2024.02.1
