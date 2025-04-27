@@ -21,7 +21,7 @@
 
 ## 1. Preparation
 
-Take the time to read all the warnings and keep in mind : It's your responsibility to stay within the law and use your material correctly.
+**Take the time to read all the warnings and keep in mind : It's your responsibility to stay within the law and use your material correctly.**
 
 ### 1.1 Understand cryptographic concepts
 
@@ -70,7 +70,7 @@ flowchart TD
 ```
 
 > [!IMPORTANT]  
-> This phase is the most important: if the secret leaks out, confidentiality is lost.
+> This part is the most important: if the secret leaks out, confidentiality is lost.
 
 ### 1.2 Generate keys and IVs
 
@@ -166,7 +166,7 @@ python ./ReadCS8.py test-to-transmit.cs8
 
 ### 2.3 Send it
 
-To leverage this POC, i suggest a SDR with an external LNA as an RF amplifier to gain a just a small amount of power. But any radio transciever should do the job.
+To leverage this POC, i suggest a SDR with an external LNA as an RF amplifier to gain a small amount of power. But any radio transciever should do the job.
 
 > [!WARNING]
 > It is not legal to transmit at any power on any frequency. Find out about current regulations before use a RF amplifier.
