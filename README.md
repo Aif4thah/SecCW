@@ -10,14 +10,13 @@
 
 **When modern communication methods fail, Morse code is still a robust fallback option. However it does not provide confidentiality. The purpose of this repository is to provide some tools for transmitting and receiving sensitive informations.**
 
-> [!CAUTION]
-> Please keep in mind that this is a Proof of concept. Take the time to read the readme and all the warnings. It's your responsibility to stay within the law and use your material correctly.
+This is a Proof of concept. Take the time to read all the warnings and keep in mind : It's your responsibility to stay within the law and use your material correctly.
 
 > [!WARNING]
 > This repository and its tools are provided "as is." The author(s) make no representations or warranties, express or implied, regarding the operation of the information, content, materials, tools, services, or products included. The author(s) disclaim, to the full extent permissible by law, all warranties, express or implied, including implied warranties of merchantability and fitness for a particular purpose.
 
 > [!NOTE]
-> While this project is open-source and free to use, we kindly ask that if you are using it for commercial purposes or in a business setting, please consider sponsoring the project through GitHub Sponsors. Your support helps maintain and improve the project, ensuring it remains a valuable resource for everyone. Thank you for your understanding and generosity.
+> Support this effort and give back by [sponsoring on GitHub!](https://github.com/sponsors/Aif4thah/)
 
 
 ## 1. Preparation
