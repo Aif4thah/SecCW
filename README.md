@@ -8,9 +8,9 @@
 
 # SecCW
 
-**When modern communication methods fail, Morse code is still a robust fallback option. However it does not provide confidentiality. The purpose of this repository is to provide some tools for transmitting and receiving sensitive informations.**
+**When modern communication methods fail, Morse code is still a robust fallback option. However it does not provide confidentiality.** 
 
-This is a Proof of concept. Take the time to read all the warnings and keep in mind : It's your responsibility to stay within the law and use your material correctly.
+**The purpose of this repository is to provide some tools for transmitting and receiving sensitive informations. It can be adapted to any radio equipment.**
 
 > [!WARNING]
 > This repository and its tools are provided "as is." The author(s) make no representations or warranties, express or implied, regarding the operation of the information, content, materials, tools, services, or products included. The author(s) disclaim, to the full extent permissible by law, all warranties, express or implied, including implied warranties of merchantability and fitness for a particular purpose.
@@ -20,6 +20,8 @@ This is a Proof of concept. Take the time to read all the warnings and keep in m
 
 
 ## 1. Preparation
+
+Take the time to read all the warnings and keep in mind : It's your responsibility to stay within the law and use your material correctly.
 
 ### 1.1 Understand cryptographic concepts
 
@@ -164,15 +166,15 @@ python ./ReadCS8.py test-to-transmit.cs8
 
 ### 2.3 Send it
 
-To exploit this proof of concept, I suggest, if the law permits, using an external LNA as an RF amplifier to gain a small amount of power.
+To leverage this POC, i suggest a SDR with an external LNA as an RF amplifier to gain a just a small amount of power. But any radio transciever should do the job.
 
 > [!WARNING]
 > It is not legal to transmit at any power on any frequency. Find out about current regulations before use a RF amplifier.
 
 > [!CAUTION]
-> Using an LNA or other external amplifiers can damage your SDR. Always use a DC blocker.
+> Using an external amplifiers can damage your SDR. Always use a DC blocker.
 
-Transmit with SDR (adjust LNA, VGA) :
+Transmit with `HackRF_transfer` (adjust LNA, VGA) :
 
 ```sh
 hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f <freq_hz> -b 1750000 -t .\test-to-transmit.cs8
@@ -182,7 +184,7 @@ hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f <freq_hz> -b 1750000 -t .\t
 ## 3. Receive
 
 > [!TIP]
-> The easy way to receive is to use a radio receiver, a third party tool such as SDR#, or a simple Talkie Walkie.
+> The easy way to receive is to use a radio receiver, a third party tool such as SDR#, or a simple Talkie-Walkie.
 
 ### 3.1 Receive and Decode cypher-text
 
