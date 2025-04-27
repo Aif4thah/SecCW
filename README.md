@@ -15,7 +15,7 @@ This is a Proof of concept. Take the time to read all the warnings and keep in m
 > [!WARNING]
 > This repository and its tools are provided "as is." The author(s) make no representations or warranties, express or implied, regarding the operation of the information, content, materials, tools, services, or products included. The author(s) disclaim, to the full extent permissible by law, all warranties, express or implied, including implied warranties of merchantability and fitness for a particular purpose.
 
-> [!NOTE]
+> [!TIP]
 > Support this effort and give back by [sponsoring on GitHub!](https://github.com/sponsors/Aif4thah/)
 
 
