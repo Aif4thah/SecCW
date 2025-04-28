@@ -149,10 +149,10 @@ python ./MsgToCypher.py enc test 9CEA372979FFDCBA028BD523A3F43A44B527DE31E2BBAE5
 
 ### 2.2 Write Signal into a file
 
-Convert to CW and write an IQ file :
+Convert to CW and write an IQ file, specify `AM` or `FM` modulation to make Morse code audible :
 
 ```sh
-python ./CWToCS8.py EFAADCF7EA0A786EF7B4EF7504605970 test-to-transmit.cs8
+python ./CWToCS8.py EFAADCF7EA0A786EF7B4EF7504605970 test-to-transmit.cs8 AM
 ```
 
 Verify Amplitude over time before sending :
