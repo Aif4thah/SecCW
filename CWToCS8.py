@@ -14,7 +14,7 @@ import numpy
 def make_baseband_samples(amplitude, length_units):
 
 	sample_rate = 8000000
-	unit_seconds = 0.1
+	unit_seconds = 0.7
 	frequency = 1000.0
 
 	length_samples = int(round(unit_seconds * length_units * sample_rate))
@@ -62,7 +62,7 @@ def convert_to_CW(message) :
 	# Start with a little silence.
 	output = [baseband_space]
 
-	for character in '< '+ message.upper() +' >': # add "<" and ">" to respect convention
+	for character in ' < '+ message.upper() +' > ': # add "<" and ">" to respect convention
 		symbols = character_to_symbols_map[character]
 		for symbol in symbols:
 			output.append(symbol_to_baseband_map[symbol])

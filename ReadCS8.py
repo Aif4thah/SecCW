@@ -143,6 +143,6 @@ if __name__ == "__main__":
         sys.exit(0)
 
     
-    read_img_real(sys.argv[1]) 
+    #read_img_real(sys.argv[1]) 
     read_amplitude(sys.argv[1])
-    read_fft(sys.argv[1])
+    #read_fft(sys.argv[1])
