@@ -155,13 +155,13 @@ Convert to CW and write an IQ file :
 python ./CWToCS8.py EFAADCF7EA0A786EF7B4EF7504605970 test-to-transmit.cs8
 ```
 
-Verify real part before sending :
+Verify Amplitude over time before sending :
 
 ```sh
 python ./ReadCS8.py test-to-transmit.cs8
 ```
 
-![PltRealPart](./Docs/PlotReal.png)
+![PltRealPart](./Docs/test-transmit-amp-vs-time.png)
 
 
 ### 2.3 Send it
