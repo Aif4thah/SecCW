@@ -1,35 +1,12 @@
 #!/usr/bin/env python
 
-# Copyright (C) 2015 Jared Boone, ShareBrained Technology
-# Copyright (C) 2023 Michael Vacarella, Taisen Solutions
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2, or (at your option)
-# any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; see the file COPYING.  If not, write to
-# the Free Software Foundation, Inc., 51 Franklin Street,
-# Boston, MA 02110-1301, USA.
+""""
+Text to CW for transmit
 
-# This is a terrible, quick hack of a Morse code baseband file generator.
-#
-# Run to generate a file that contains baseband data you can later transmit
-# with hackrf_transfer :
-# 
-#     .\venv\Scripts\activate
-#     python ./CWToCS8.py test test.cs8
-#
-# Use with hackrf_transfer as follows to transmit :
-#
-#     hackrf_transfer -s 8000000 -x 16 -a 0 -f <freq_hz> -b 1750000 -t test.cs8
-#
+* Convert text to Morse
+* Write IQ in CS8 format
+
+"""
 
 import sys
 import numpy
@@ -50,56 +27,15 @@ def make_baseband_samples(amplitude, length_units):
 def convert_to_CW(message) :
 
 	character_to_symbols_map = {
-	'A': '.-',
-	'B': '-...',
-	'C': '-.-.',
-	'D': '-..',
-	'E': '.',
-	'F': '..-.',
-	'G': '--.',
-	'H': '....',
-	'I': '..',
-	'J': '.---',
-	'K': '-.-',
-	'L': '.-..',
-	'M': '--',
-	'N': '-.',
-	'O': '---',
-	'P': '.--.',
-	'Q': '--.-',
-	'R': '.-.',
-	'S': '...',
-	'T': '-',
-	'U': '..-',
-	'V': '...-',
-	'W': '.--',
-	'X': '-..-',
-	'Y': '-.--',
-	'Z': '--..',
-	'1': '.----',
-	'2': '..---',
-	'3': '...--',
-	'4': '....-',
-	'5': '.....',
-	'6': '-....',
-	'7': '--...',
-	'8': '---..',
-	'9': '----.',
-	'0': '-----',
-	' ': ' ',
-	'É': '..-..',
-	'.': '.-.-.-',
-	',': '--..--',
-	':': '---...',
-	'?': '..--..',
-	'!': '-.-.--',
-	'\'': '.----.',
-	'-': '-....-',
-	'|': '-..-.',
-	'(': '-.--.-',
-	')': '-.--.-',
-	'À':'.--.-',
-	'@': '.--.-.',
+	'A': '.-','B': '-...','C': '-.-.','D': '-..','E': '.','F': '..-.','G': '--.',
+	'H': '....','I': '..','J': '.---','K': '-.-','L': '.-..','M': '--','N': '-.',
+	'O': '---','P': '.--.','Q': '--.-','R': '.-.','S': '...','T': '-','U': '..-',
+	'V': '...-','W': '.--','X': '-..-','Y': '-.--','Z': '--..',
+	'1': '.----','2': '..---','3': '...--','4': '....-','5': '.....',
+	'6': '-....','7': '--...','8': '---..','9': '----.','0': '-----',
+	' ': ' ','É': '..-..','.': '.-.-.-',',': '--..--',':': '---...',
+	'?': '..--..','!': '-.-.--','\'': '.----.','-': '-....-','|': '-..-.',
+	'(': '-.--.-',')': '-.--.-','À':'.--.-','@': '.--.-.',
 	'<' : '-.-.-', # begin transmission
 	'>' : '.-.-.' # end transmission
 	}
@@ -151,6 +87,8 @@ if __name__ == "__main__":
 
 	if len(sys.argv) != 3:
 		print("Usage: <script> <message> <output file>")
+		print("\nExemple :")
+		print("python ./CWToCS8.py abcdefghijklmnopqrstuvwxyz0123456789 test-abc.cs8")
 		sys.exit(0)
 
 	write_toCS8(convert_to_CW(sys.argv[1]), sys.argv[2])

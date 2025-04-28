@@ -1,18 +1,13 @@
 #!/usr/bin/env python
 
-# encrypt and decrypt with AES and IV
-#
-# Encrypt :
-#  
-# python ./MsgToCypher.py test
-# python ./MsgToCypher.py enc test 9CEA372979FFDCBA028BD523A3F43A44B527DE31E2BBAE56F641D87D3F6C80BC A977EA111934D65E8A6B5AC3D52B82F8
-#
-# Decrypt : 
-#
-# python ./MsgToCypher.py dec EFAADCF7EA0A786EF7B4EF7504605970 9CEA372979FFDCBA028BD523A3F43A44B527DE31E2BBAE56F641D87D3F6C80BC A977EA111934D65E8A6B5AC3D52B82F8
-#
-# /!\ Be aware that IVs should not be used twice ! 
-#
+""""
+AES-CBC script
+
+* Generate key and IVs
+* Encrypt
+* Decrypt 
+
+"""
 
 import secrets
 import sys
@@ -46,6 +41,12 @@ if __name__ == "__main__":
         print("Usage to encrypt with random key: <script> <msg>")
         print("Usage to encrypt: <script> enc <msg> <key_hex> <iv_hex>")
         print("Usage to decrypt: <script> dec <cipher_hex> <key_hex> <iv_hex>")
+        print("\nExemple :")
+        print("python ./MsgToCypher.py test")
+        print("python ./MsgToCypher.py enc test 9CEA372979FFDCBA028BD523A3F43A44B527DE31E2BBAE56F641D87D3F6C80BC A977EA111934D65E8A6B5AC3D52B82F8")
+        print("python ./MsgToCypher.py dec EFAADCF7EA0A786EF7B4EF7504605970 9CEA372979FFDCBA028BD523A3F43A44B527DE31E2BBAE56F641D87D3F6C80BC A977EA111934D65E8A6B5AC3D52B82F8")
+
+
         sys.exit(0)
 
     if len(sys.argv) == 2:

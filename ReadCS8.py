@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
-# Optimized IQ and FFT Signal Analysis
+"""
+Resharp the signal from a CS8 file
+
+"""
 
 import numpy as np
 import pyfftw
@@ -135,6 +138,8 @@ def read_amplitude(input_file, sampling_rate=8000000): #default sample rate = 80
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: <script> <input file>")
+        print("\nExemple :")
+        print("python ./CWToCS8.py EFAADCF7EA0A786EF7B4EF7504605970 test-to-transmit.cs8")
         sys.exit(0)
 
     

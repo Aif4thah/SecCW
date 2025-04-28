@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
-# convert frequancy to wave length
-# python .\FreqToAntSize.py <freq hz>
+"""
+convert frequancy to wave length
+
+"""
 
 import sys
 
@@ -20,6 +22,8 @@ if __name__ == "__main__":
 
     if len(sys.argv) != 2:
         print("Usage: <script> <frequency (Hz)>")
+        print("\nExemple :")
+        print("python ./FreqToAntSize.py 44600625")
         sys.exit(0)
 
     get_ant_size(sys.argv[1])
