@@ -154,11 +154,14 @@ Convert to CW and write an IQ file, specify `AM` or `FM` modulation to make Mors
 python ./CWToCS8.py EFAADCF7EA0A786EF7B4EF7504605970 test-to-transmit.cs8 AM
 ```
 
-Verify Amplitude over time before sending :
+Verify file before sending :
 
 ```sh
 python ./ReadCS8.py test-to-transmit.cs8
 ```
+
+> [!NOTE]  
+> the shape of the signal varies according to the modulation
 
 ![PltRealPart](./Docs/test-transmit-amp-vs-time.png)
 
@@ -176,7 +179,7 @@ To leverage this POC, i suggest a SDR with an external LNA as an RF amplifier to
 Transmit with `HackRF_transfer` (adjust LNA, VGA, AMP, frequence, fileName etc.) :
 
 ```sh
-hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f 26975000 -b 1750000 -t .\test-clear-AM.cs8 -d f
+ hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f 26975000 -b 1750000 -t .\test-to-transmit.cs8
 ```
 
 
