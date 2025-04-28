@@ -1,16 +1,15 @@
-<p align="center">
-    <img src="./Docs/HackRF-LaNa-Transmit.jpg" alt="HackRF-Lan" style="width: 800px;" />
-</p>
+# SecCW
 
+<p align="center">
+    <br>
+    When modern communication methods fail, Morse code is still a robust fallback option. However it does not provide confidentiality.
+    <br>
+    The purpose of this repository is to provide some tools for transmitting and receiving sensitive informations. It can be adapted to any radio equipment.
+    <br>
+</p>
 
 [![License: GNU GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Github Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-30363D?&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/Aif4thah/)
-
-# SecCW
-
-**When modern communication methods fail, Morse code is still a robust fallback option. However it does not provide confidentiality.** 
-
-**The purpose of this repository is to provide some tools for transmitting and receiving sensitive informations. It can be adapted to any radio equipment.**
 
 > [!WARNING]
 > This repository and its tools are provided "as is." The author(s) make no representations or warranties, express or implied, regarding the operation of the information, content, materials, tools, services, or products included. The author(s) disclaim, to the full extent permissible by law, all warranties, express or implied, including implied warranties of merchantability and fitness for a particular purpose.
@@ -174,10 +173,10 @@ To leverage this POC, i suggest a SDR with an external LNA as an RF amplifier to
 > [!CAUTION]
 > Using an external amplifiers can damage your SDR. Always use a DC blocker.
 
-Transmit with `HackRF_transfer` (adjust LNA, VGA) :
+Transmit with `HackRF_transfer` (adjust LNA, VGA, AMP, frequence, fileName etc.) :
 
 ```sh
-hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f <freq_hz> -b 1750000 -t .\test-to-transmit.cs8
+hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f 26975000 -b 1750000 -t .\test-clear-AM.cs8 -d f
 ```
 
 
@@ -204,14 +203,6 @@ Then we can visualize the Signal :
 ```sh
 python ./ReadCS8.py .\test-recvd.cs8
 ```
-
-
-FFT :
-
-![recv](./Docs/test-recvd-FFT.png)
-
-
-Amplitude over time :
 
 ![recv](./Docs/test-recvd-amp-vs-time.png)
 
