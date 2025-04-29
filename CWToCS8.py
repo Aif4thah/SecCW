@@ -21,7 +21,7 @@ def make_am_samples(amplitude, length_units, frequency=300.0):
     :return: Signal AM
     """
     sample_rate = 8000000
-    unit_seconds = 0.2
+    unit_seconds = 0.3
 
     length_samples = int(round(unit_seconds * length_units * sample_rate))
     t = numpy.arange(length_samples) / sample_rate
@@ -43,13 +43,12 @@ def make_fm_samples(amplitude, length_units, carrier_frequency=100000.0, modulat
     :param sample_rate: Taux d'échantillonnage (en Hz)
     :return: Signal FM
     """
-    unit_seconds = 0.2  # Durée de base pour chaque unité
+    unit_seconds = 0.3  # Durée de base pour chaque unité
     length_samples = int(round(unit_seconds * length_units * sample_rate))
     t = numpy.arange(length_samples) / sample_rate
 
     # Calcul de la fréquence instantanée avec une grande déviation
-    instantaneous_phase = 2 * numpy.pi * carrier_frequency * t + \
-                          (deviation / modulation_frequency) * numpy.sin(2 * numpy.pi * modulation_frequency * t)
+    instantaneous_phase = 2 * numpy.pi * carrier_frequency * t + (deviation / modulation_frequency) * numpy.sin(2 * numpy.pi * modulation_frequency * t)
 
     # Génération du signal FM
     signal_fm = amplitude * numpy.sin(instantaneous_phase)
