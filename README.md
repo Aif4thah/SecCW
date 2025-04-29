@@ -1,12 +1,13 @@
-# SecCW
-
 <p align="center">
+    <img src="./Docs/Logo.png" alt="Dojo-101" style="width: 400px;" />
     <br>
     When modern communication methods fail, Morse code is still a robust fallback option. However it does not provide confidentiality.
     <br>
     The purpose of this repository is to provide some tools for transmitting and receiving sensitive informations. It can be adapted to any radio equipment.
     <br>
 </p>
+
+# SecCW
 
 [![License: GNU GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Github Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-30363D?&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/Aif4thah/)
