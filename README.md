@@ -13,17 +13,26 @@
 [![Github Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-30363D?&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/Aif4thah/)
 
 > [!WARNING]
-> This repository and its tools are provided "as is." The author(s) make no representations or warranties, express or implied, regarding the operation of the information, content, materials, tools, services, or products included. The author(s) disclaim, to the full extent permissible by law, all warranties, express or implied, including implied warranties of merchantability and fitness for a particular purpose.
+> This repository and its tools are provided "as is" without warranty of any kind, either express or implied, including but not limited to, any warranties of merchantability, fitness for a particular purpose, and non-infringement. The authors shall not be liable for any claims, damages, or other liabilities arising from, out of, or in connection with the use of this tool. The user is solely responsible for ensuring their use of this tool complies with all applicable laws and regulations. The authors disclaim any liability for illegal or unethical use.
 
 > [!TIP]
 > Support this effort and give back by [sponsoring on GitHub!](https://github.com/sponsors/Aif4thah/)
 
 
-## 1. Preparation
+## Inventory
 
-**Take the time to read all the warnings and keep in mind : It's your responsibility to stay within the law and use your material correctly.**
+| **Script**        | **Use Case**                                      |
+|-------------------|---------------------------------------------------|
+| `MsgToCypher.py`  | AES256 secret generation, Message encryption/decryption |
+| `CWToCS8.py`      | Convert message to IQ, write CS8 file             |
+| `ReadCS8.py`      | Display Signal (IQ, FFT, Amp) from a CS8 file    |
+| `FreqToAntSize.py`| Convert Frequency to Wavelength                   |
 
-### 1.1 Understand cryptographic concepts
+
+
+## POC
+
+### Cryptographic concepts
 
 To communicate securely, you need to generate and share cryptographic secrets :
 
@@ -69,10 +78,7 @@ flowchart TD
     C --> | Not allowed or needed | D
 ```
 
-> [!IMPORTANT]  
-> This part is the most important: if the secret leaks out, confidentiality is lost.
-
-### 1.2 Generate keys and IVs
+### Secrets Generation
 
 This example generates the `AES256` key and the `IV` (initialization vectors) for your future messages.
 
@@ -88,15 +94,10 @@ python ./MsgToCypher.py test
 # next iv : F2427CAF0E5EF2F65B9A2AA4D8E43F79
 ```
 
-> [!IMPORTANT]  
-> Unlike key, IVs must not be used more than once. Generate as many IVs as messages.
 
-Then share your secret with your recipients over a secure channel.
+### Frequency plan
 
-
-### 1.3 Choose a frequency plan
-
-Obfuscation is not security, but to avoid interception you can change frequency over time.
+Obfuscation is not security, but to mitigate the risk of interception you can change frequency over time.
 
 ```mermaid
 gantt
@@ -111,10 +112,7 @@ gantt
     f6 :active, T6, 2025-05-01, 2025-05-05
 ```
 
-> [!IMPORTANT]  
-> The more you change frequencies, the more your audience may miss your message, so be sure to use the same time source.
-
-When frequency changes, antenna type and recommended length vary, get wavelength from your choosen frequency :
+When frequency changes, antenna type and recommended length vary :
 
 ```sh
 python .\FreqToAntSize.py <freq_hz>
@@ -123,16 +121,8 @@ python .\FreqToAntSize.py <freq_hz>
 #Ant (cm) : YYY.YYYY
 ```
 
-Share your frequency plan with your recipients over a secure channel.
 
-> [!WARNING]
-> It is not legal to transmit at any power on any frequency. Find out about current regulations before validating your frequency plan.
-
-
-
-## 2. Transmit
-
-### 2.1 Encrypt your message
+### Encryption
 
 This exemple encrypt de message "test" using the `AES256` algorithm with `CBC` mode :
 
@@ -144,38 +134,20 @@ python ./MsgToCypher.py enc test 9CEA372979FFDCBA028BD523A3F43A44B527DE31E2BBAE5
 # cipherText: EFAADCF7EA0A786EF7B4EF7504605970
 ```
 
-> [!TIP]
-> AES encryption works whith blocks, so don't make it too long or too short.
 
-### 2.2 Write Signal into a file
+### Signal Processing
 
 Convert to CW and write an IQ file, specify `AM` or `FM` modulation to make Morse code audible :
 
 ```sh
 python ./CWToCS8.py EFAADCF7EA0A786EF7B4EF7504605970 test-to-transmit.cs8 AM
-```
-
-Verify file before sending :
-
-```sh
 python ./ReadCS8.py test-to-transmit.cs8
 ```
-
-> [!NOTE]  
-> the shape of the signal varies according to the modulation
 
 ![PltRealPart](./Docs/test-transmit-amp-vs-time.png)
 
 
-### 2.3 Send it
-
-To leverage this POC, i suggest a SDR with an external LNA as an RF amplifier to gain a small amount of power. But any radio transciever should do the job.
-
-> [!WARNING]
-> It is not legal to transmit at any power on any frequency. Find out about current regulations before use a RF amplifier.
-
-> [!CAUTION]
-> Using an external amplifiers can damage your SDR. Always use a DC blocker.
+### Transmit
 
 Transmit with `HackRF_transfer` (adjust LNA, VGA, AMP, frequence, fileName etc.) :
 
@@ -183,36 +155,23 @@ Transmit with `HackRF_transfer` (adjust LNA, VGA, AMP, frequence, fileName etc.)
  hackrf_transfer -s 8000000 -x 47 -g 60 -l 40 -a 1 -f 26975000 -b 1750000 -t .\test-to-transmit.cs8
 ```
 
-
-## 3. Receive
-
-> [!TIP]
-> The easy way to receive is to use a radio receiver, a third party tool such as SDR#, or a simple Talkie-Walkie.
-
-### 3.1 Receive and Decode cypher-text
+### Receive
 
 You can simply listen to or read the waterfall :
 
 ![Waterfall](./Docs/Waterfall.png)
 
-
-For further analysis, here is the `HackRF_transfer` command to write the signal in an IQ file (adjust LNA and VGA) :
+For further analysis, here is the `HackRF_transfer` command to write the signal in an IQ file (adjust LNA and VGA) and visualize it :
 
 ```sh
 hackrf_transfer -s 8000000 -f <freq_hz> -b 1750000 -a 1 -l 24 -g 12 -r test-recvd.cs8
-```
-
-Then we can visualize the Signal :
-
-```sh
 python ./ReadCS8.py .\test-recvd.cs8
 ```
 
 ![recv](./Docs/test-recvd-amp-vs-time.png)
 
-### 3.2 Get the Clear Text
 
-After decoding the Morse code, decrypt the message
+### Decryption
 
 ```sh
 python ./MsgToCypher.py dec EFAADCF7EA0A786EF7B4EF7504605970 9CEA372979FFDCBA028BD523A3F43A44B527DE31E2BBAE56F641D87D3F6C80BC A977EA111934D65E8A6B5AC3D52B82F8
@@ -221,9 +180,7 @@ python ./MsgToCypher.py dec EFAADCF7EA0A786EF7B4EF7504605970 9CEA372979FFDCBA028
 ```
 
 
-## 4. Misc
-
-### 4.1 Environment
+## Misc
 
 **Python**
 
@@ -235,6 +192,7 @@ python ./MsgToCypher.py dec EFAADCF7EA0A786EF7B4EF7504605970 9CEA372979FFDCBA028
 * Binaries: 2024.02.1
 * Firmware Version: 2024.02.1
 
-## 5. Credits
+
+## Credits
 
 * Special thanks to @jboone [for his original Morse script](https://gist.github.com/jboone/de67df55a2059dcebcdb).
