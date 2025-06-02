@@ -15,9 +15,6 @@
 > [!WARNING]
 > This repository and its tools are provided "as is" without warranty of any kind, either express or implied, including but not limited to, any warranties of merchantability, fitness for a particular purpose, and non-infringement. The authors shall not be liable for any claims, damages, or other liabilities arising from, out of, or in connection with the use of this tool. The user is solely responsible for ensuring their use of this tool complies with all applicable laws and regulations. The authors disclaim any liability for illegal or unethical use.
 
-> [!TIP]
-> Support this effort and give back by [sponsoring on GitHub!](https://github.com/sponsors/Aif4thah/)
-
 
 ## Inventory
 
@@ -196,3 +193,5 @@ python ./MsgToCypher.py dec EFAADCF7EA0A786EF7B4EF7504605970 9CEA372979FFDCBA028
 ## Credits
 
 * Special thanks to @jboone [for his original Morse script](https://gist.github.com/jboone/de67df55a2059dcebcdb).
+
+* Support this effort and give back by [sponsoring on GitHub!](https://github.com/sponsors/Aif4thah/)
