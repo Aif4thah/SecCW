@@ -1,4 +1,4 @@
-name: Création du venv et analyse de sécurité avec Bandit
+name: Bandit Security Scan
 permissions:
   contents: read
   pull-requests: write
@@ -16,22 +16,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Vérifier le code
-      uses: actions/checkout@v3
+      - name: Vérifier le code
+        uses: actions/checkout@v3
 
-    - name: Configurer Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
+      - name: Configurer Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
 
-    - name: Installer les dépendances
-      run: |
-        python -m venv venv
-        source venv/bin/activate
-        pip install -r requirements.txt
-        pip install bandit
+      - name: Installer les dépendances
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+          pip install bandit
 
-    - name: Analyse de sécurité avec Bandit
-      run: |
-        source venv/bin/activate
-        bandit -r . --severity-level high --exclude "./venv" # Dependabot already analyzes dependencies
+      - name: Analyse de sécurité avec Bandit
+        run: |
+          source venv/bin/activate
+          bandit -r . --severity-level high --exclude "./venv" # Dependabot already analyzes dependencies
