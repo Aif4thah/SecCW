@@ -1,10 +1,8 @@
 <p align="center">
     <img src="./Docs/Logo.png" alt="Dojo-101" style="width: 400px;" />
-    <br>
     When modern communication methods fail, Morse code is still a robust fallback option. However it does not provide confidentiality.
-    <br>
     The purpose of this repository is to provide some tools for transmitting and receiving sensitive informations. It can be adapted to any radio equipment.
-    <br>
+
 </p>
 
 # SecCW
@@ -15,7 +13,6 @@
 > [!WARNING]
 > This repository and its tools are provided "as is" without warranty of any kind, either express or implied, including but not limited to, any warranties of merchantability, fitness for a particular purpose, and non-infringement. The authors shall not be liable for any claims, damages, or other liabilities arising from, out of, or in connection with the use of this tool. The user is solely responsible for ensuring their use of this tool complies with all applicable laws and regulations. The authors disclaim any liability for illegal or unethical use.
 
-
 ## Inventory
 
 | **Script**        | **Use Case**                                      |
@@ -24,8 +21,6 @@
 | `CWToCS8.py`      | Convert message to IQ, write CS8 file             |
 | `ReadCS8.py`      | Display Signal (IQ, FFT, Amp) from a CS8 file    |
 | `FreqToAntSize.py`| Convert Frequency to Wavelength                   |
-
-
 
 ## POC
 
@@ -48,7 +43,6 @@ journey
 ```
 
 This POC simplify the [NIST.SP.800-57](https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final) `Key States` :
-
 
 | States | Short Description |
 |-----|-----|
@@ -91,7 +85,6 @@ python ./MsgToCypher.py test
 # next iv : F2427CAF0E5EF2F65B9A2AA4D8E43F79
 ```
 
-
 ### Frequency plan
 
 Obfuscation is not security, but to mitigate the risk of interception you can change frequency over time.
@@ -118,7 +111,6 @@ python .\FreqToAntSize.py <freq_hz>
 #Ant (cm) : YYY.YYYY
 ```
 
-
 ### Encryption
 
 This exemple encrypt de message "test" using the `AES256` algorithm with `CBC` mode :
@@ -130,7 +122,6 @@ python ./MsgToCypher.py enc test 9CEA372979FFDCBA028BD523A3F43A44B527DE31E2BBAE5
 # iv: A977EA111934D65E8A6B5AC3D52B82F8
 # cipherText: EFAADCF7EA0A786EF7B4EF7504605970
 ```
-
 
 ### Signal Processing
 
@@ -176,19 +167,17 @@ python ./MsgToCypher.py dec EFAADCF7EA0A786EF7B4EF7504605970 9CEA372979FFDCBA028
 # message: test
 ```
 
-
 ## Misc
 
-**Python**
+### Python
 
 * version: 3.13.2.
 * Virtual Env and dependencies: read `requirement.txt`
 
-**HackRF-One**
+### HackRF-One
 
 * Binaries: 2024.02.1
 * Firmware Version: 2024.02.1
-
 
 ## Credits
 
